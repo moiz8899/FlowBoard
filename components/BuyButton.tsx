@@ -31,6 +31,12 @@ export function BuyButton({
     const environment = (process.env.NEXT_PUBLIC_PADDLE_ENVIRONMENT || "sandbox") as Environments;
 
     if (!token) {
+      const downloadResponse = await fetch(`/api/download/${productSlug}`, { method: "HEAD" });
+      if (downloadResponse.ok) {
+        window.location.href = `/api/download/${productSlug}`;
+        return;
+      }
+
       alert("Paddle is not configured yet.");
       return;
     }
