@@ -4,7 +4,7 @@ const stats = [
   { icon: Puzzle, label: "Templates Coming Soon" },
   { icon: Download, label: "Instant Downloads" },
   { icon: Star, label: "Buyer Reviews Ready" },
-  { icon: LockKeyhole, label: "Secure 2Checkout Payments" }
+  { icon: LockKeyhole, label: "Secure Paddle Payments" }
 ];
 
 export function TrustBar() {

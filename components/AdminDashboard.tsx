@@ -38,7 +38,7 @@ type FormState = {
   features: string;
   techStack: string;
   tags: string;
-  twoCheckoutProductId: string;
+  paddlePriceId: string;
 };
 
 const emptyForm: FormState = {
@@ -54,7 +54,7 @@ const emptyForm: FormState = {
   features: "",
   techStack: "HTML5, CSS3, JavaScript",
   tags: "",
-  twoCheckoutProductId: ""
+  paddlePriceId: ""
 };
 
 export function AdminDashboard({ initialProducts, categories, adminEmail, metrics }: AdminDashboardProps) {
@@ -109,7 +109,7 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
       features: splitList(form.features),
       techStack: splitList(form.techStack),
       tags: splitList(form.tags),
-      twoCheckoutProductId: form.twoCheckoutProductId
+      paddlePriceId: form.paddlePriceId
     };
 
     startTransition(async () => {
@@ -191,7 +191,7 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
               FlowBoard Admin
             </h1>
             <p className="mt-3 max-w-2xl text-muted">
-              Manage dashboard products now. Traffic, revenue, and sales metrics are ready for analytics and 2Checkout integrations.
+              Manage dashboard products now. Traffic, revenue, and sales metrics are ready for analytics and Paddle integrations.
             </p>
           </div>
           <a href="/" className="btn-ghost inline-flex min-h-11 items-center justify-center px-5">
@@ -278,7 +278,7 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
                 </div>
                 <Field label="Short Description" value={form.description} onChange={(value) => updateField("description", value)} required />
                 <TextField label="Long Description" value={form.longDescription} onChange={(value) => updateField("longDescription", value)} required />
-                <Field label="2Checkout Product ID" value={form.twoCheckoutProductId} onChange={(value) => updateField("twoCheckoutProductId", value)} required />
+                <Field label="Paddle Price ID" value={form.paddlePriceId} onChange={(value) => updateField("paddlePriceId", value)} required />
                 <FilePicker
                   label="Upload Dashboard ZIP"
                   accept=".zip,application/zip,application/x-zip-compressed"
@@ -313,7 +313,7 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
               </div>
               {metrics.topProducts.length === 0 ? (
                 <div className="mt-6 rounded-md border border-dashed border-line p-6 text-center text-sm text-muted">
-                  Connect 2Checkout order data to rank dashboards by sales.
+                  Connect Paddle order data to rank dashboards by sales.
                 </div>
               ) : (
                 <div className="mt-5 divide-y divide-line">

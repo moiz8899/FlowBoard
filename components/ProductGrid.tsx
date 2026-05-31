@@ -59,7 +59,7 @@ export function ProductGrid({ initialProducts = [], lockedCategory }: ProductGri
         <div className="rounded-lg border border-dashed border-line bg-surface/60 p-10 text-center">
           <h3 className="font-display text-2xl font-bold text-white">No dashboards added yet</h3>
           <p className="mx-auto mt-3 max-w-xl text-muted">
-            Add your first dashboard product to `data/products.json` when your screenshots, demo URL, and 2Checkout product ID are ready.
+            Add your first dashboard product when your screenshots, dashboard ZIP, and Paddle Price ID are ready.
           </p>
         </div>
       ) : null}

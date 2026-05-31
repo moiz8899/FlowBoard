@@ -26,7 +26,7 @@ export type Product = {
   reviewCount: number;
   downloadCount: number;
   tags: string[];
-  twoCheckoutProductId: string;
+  paddlePriceId: string;
   createdAt: string;
   version: string;
 };
@@ -58,9 +58,4 @@ export function formatPrice(price: number) {
     currency: "USD",
     maximumFractionDigits: 0
   }).format(price);
-}
-
-export function getCheckoutUrl(productId: string) {
-  const merchantCode = process.env.NEXT_PUBLIC_2CO_MERCHANT_CODE || "your_merchant_code";
-  return `https://secure.2checkout.com/order/checkout.php?PRODS=${productId}&QTY=1&MERCHANT=${merchantCode}&CART=1&CARD=2`;
 }

@@ -23,7 +23,7 @@ export default function RefundPolicyPage() {
           title: "How to Request a Refund",
           body: [
             "Email dialyn360@gmail.com with your order email, product name, order reference, and a short explanation of the issue.",
-            "If payment was processed by 2Checkout, the refund may also be processed through 2Checkout/Verifone according to their shopper support process."
+            "If payment was processed by Paddle, the refund may also be processed through Paddle according to their shopper support process."
           ]
         },
         {

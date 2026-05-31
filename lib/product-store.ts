@@ -21,7 +21,7 @@ type ProductRow = {
   review_count: number;
   download_count: number;
   tags: string[];
-  two_checkout_product_id: string;
+  paddle_price_id: string;
   created_at: string;
   version: string;
 };
@@ -178,7 +178,7 @@ function mapProductRow(row: ProductRow): Product {
     reviewCount: row.review_count || 0,
     downloadCount: row.download_count || 0,
     tags: row.tags || [],
-    twoCheckoutProductId: row.two_checkout_product_id,
+    paddlePriceId: row.paddle_price_id,
     createdAt: row.created_at,
     version: row.version
   };
@@ -202,7 +202,7 @@ function productPayloadToRow(payload: ProductPayload) {
     review_count: payload.reviewCount ?? 0,
     download_count: payload.downloadCount ?? 0,
     tags: payload.tags || [],
-    two_checkout_product_id: payload.twoCheckoutProductId,
+    paddle_price_id: payload.paddlePriceId,
     version: payload.version || "1.0.0"
   };
 }

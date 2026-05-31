@@ -65,7 +65,8 @@ export function ProductCard({ product }: ProductCardProps) {
             Details
           </Link>
           <BuyButton
-            twoCheckoutProductId={product.twoCheckoutProductId}
+            paddlePriceId={product.paddlePriceId}
+            productSlug={product.slug}
             className="gap-2 px-3 text-sm"
             label={
               <>

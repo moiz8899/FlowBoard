@@ -20,7 +20,7 @@ export function Footer() {
           </a>
           <p className="mt-4 inline-flex items-center gap-2 text-sm text-muted">
             <ShieldCheck className="h-4 w-4 text-emerald-400" aria-hidden="true" />
-            Secured by 2Checkout
+            Secured by Paddle
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4 text-sm text-muted">

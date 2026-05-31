@@ -1,2 +1,3 @@
 # FlowBoard
-A Storefront for Selling Digital Products
+
+Storefront for selling premium dashboard templates.

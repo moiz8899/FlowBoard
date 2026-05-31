@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
           title: "Information We Collect",
           body: [
             "We may collect your email address, order details, support messages, and product access records when you buy a dashboard template or contact support.",
-            "Payments are processed by third-party providers such as 2Checkout/Verifone. FlowBoard does not store full card numbers."
+            "Payments are processed by third-party providers such as Paddle. FlowBoard does not store full card numbers."
           ]
         },
         {

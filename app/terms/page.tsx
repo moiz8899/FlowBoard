@@ -29,7 +29,7 @@ export default function TermsPage() {
         {
           title: "Payments",
           body: [
-            "Payments may be processed by 2Checkout/Verifone or another listed payment provider. Payment provider terms may also apply at checkout.",
+            "Payments may be processed by Paddle or another listed payment provider. Payment provider terms may also apply at checkout.",
             "Prices are shown before checkout. Taxes, currency conversion, and payment method availability may depend on the payment provider and buyer location."
           ]
         },

@@ -82,7 +82,7 @@ export default async function HomePage() {
             {
               icon: Download,
               title: "Instant Download",
-              text: "2Checkout handles secure payment and digital delivery after purchase."
+              text: "Paddle handles secure checkout while FlowBoard delivers private dashboard files after purchase."
             }
           ].map((feature) => (
             <div key={feature.title} className="rounded-lg border border-line bg-surface p-6">

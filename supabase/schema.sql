@@ -18,23 +18,28 @@ create table if not exists public.products (
   review_count integer not null default 0,
   download_count integer not null default 0,
   tags text[] not null default '{}',
-  two_checkout_product_id text not null,
+  paddle_price_id text not null default '',
   version text not null default '1.0.0',
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 
 alter table public.products drop column if exists demo_url;
+alter table public.products add column if not exists paddle_price_id text not null default '';
+alter table public.products drop column if exists two_checkout_product_id;
 
 create table if not exists public.orders (
   id uuid primary key default gen_random_uuid(),
-  two_checkout_order_id text unique,
+  paddle_transaction_id text unique,
   buyer_email text,
   gross_amount integer not null default 0,
   currency text not null default 'USD',
   status text not null default 'pending',
   created_at timestamptz not null default now()
 );
+
+alter table public.orders add column if not exists paddle_transaction_id text unique;
+alter table public.orders drop column if exists two_checkout_order_id;
 
 create table if not exists public.order_items (
   id uuid primary key default gen_random_uuid(),
@@ -43,6 +48,9 @@ create table if not exists public.order_items (
   quantity integer not null default 1 check (quantity > 0),
   unit_price integer not null default 0 check (unit_price >= 0)
 );
+
+create unique index if not exists order_items_order_product_unique
+on public.order_items(order_id, product_id);
 
 create table if not exists public.product_events (
   id uuid primary key default gen_random_uuid(),

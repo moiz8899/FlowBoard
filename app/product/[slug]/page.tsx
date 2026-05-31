@@ -113,7 +113,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
               ) : null}
             </div>
             <BuyButton
-              twoCheckoutProductId={product.twoCheckoutProductId}
+              paddlePriceId={product.paddlePriceId}
+              productSlug={product.slug}
               className="mt-6 w-full px-6 py-3"
             />
             <div className="my-6 h-px bg-line" />
