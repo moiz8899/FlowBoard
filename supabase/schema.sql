@@ -26,8 +26,19 @@ create table if not exists public.products (
 );
 
 alter table public.products drop column if exists demo_url;
+alter table public.products add column if not exists original_price integer check (original_price is null or original_price >= 0);
+alter table public.products add column if not exists features text[] not null default '{}';
+alter table public.products add column if not exists tech_stack text[] not null default '{}';
+alter table public.products add column if not exists screenshots text[] not null default '{}';
+alter table public.products add column if not exists file_path text;
+alter table public.products add column if not exists rating numeric(2,1) not null default 0;
+alter table public.products add column if not exists review_count integer not null default 0;
+alter table public.products add column if not exists download_count integer not null default 0;
+alter table public.products add column if not exists tags text[] not null default '{}';
 alter table public.products add column if not exists paddle_price_id text not null default '';
 alter table public.products add column if not exists payment_bypass_enabled boolean not null default false;
+alter table public.products add column if not exists version text not null default '1.0.0';
+alter table public.products add column if not exists updated_at timestamptz not null default now();
 alter table public.products drop column if exists two_checkout_product_id;
 
 create table if not exists public.orders (
