@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "ai",
+    "label": "AI Dashboard",
+    "color": "#7C3AED",
+    "description": "AI-powered dashboard templates for analytics, predictions, and model monitoring."
+  },
+  {
+    "slug": "crm",
+    "label": "CRM Dashboard",
+    "color": "#2563EB",
+    "description": "Client relationship management tools for freelancers and agencies."
+  },
+  {
+    "slug": "finance",
+    "label": "Finance Dashboard",
+    "color": "#059669",
+    "description": "Track revenue, expenses, invoices, and financial KPIs."
+  },
+  {
+    "slug": "agency",
+    "label": "Agency Dashboard",
+    "color": "#D97706",
+    "description": "Project and team management dashboards for creative agencies."
+  },
+  {
+    "slug": "education",
+    "label": "Education Dashboard",
+    "color": "#DC2626",
+    "description": "LMS-style tracking for students, tutors, and online educators."
+  }
+]
