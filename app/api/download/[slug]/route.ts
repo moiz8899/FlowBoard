@@ -17,13 +17,19 @@ export async function GET(_request: Request, { params }: DownloadRouteProps) {
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase.storage
     .from("dashboard-files")
-    .createSignedUrl(filePath, 60 * 10);
+    .download(filePath);
 
-  if (error || !data?.signedUrl) {
-    return NextResponse.json({ error: error?.message || "Could not create download link." }, { status: 500 });
+  if (error || !data) {
+    return NextResponse.json({ error: error?.message || "Could not download file." }, { status: 500 });
   }
 
-  return NextResponse.redirect(data.signedUrl);
+  const fileName = filePath.split("/").pop() || `${product.slug}.zip`;
+  return new Response(data, {
+    headers: {
+      "Content-Disposition": `attachment; filename="${fileName}"`,
+      "Content-Type": data.type || "application/zip"
+    }
+  });
 }
 
 export async function HEAD(_request: Request, { params }: DownloadRouteProps) {
