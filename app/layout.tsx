@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   },
   description:
     "Buy production-ready HTML dashboard templates with one-time pricing, instant download, and no subscription.",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" }
+    ],
+    apple: [
+      { url: "/apple-icon.png", type: "image/png" }
+    ]
+  },
   openGraph: {
     title: "FlowBoard",
     description: "Premium HTML dashboard templates for real work.",
