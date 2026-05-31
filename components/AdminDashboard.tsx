@@ -128,9 +128,9 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
         return;
       }
 
-      setProducts((current) => [data.product, ...current]);
+      setProducts((current) => [data.product, ...current.filter((product) => product.slug !== data.product.slug)]);
       setForm(emptyForm);
-      setMessage("Dashboard added.");
+      setMessage("Dashboard saved.");
     });
   }
 
@@ -234,8 +234,8 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
                     <div>
                       <p className="font-semibold text-white">{product.name}</p>
                       <p className="text-sm text-muted">
-                        {product.categoryLabel} · {formatPrice(product.price)}
-                        {product.paymentBypassEnabled ? " · Payment bypass on" : ""}
+                        {product.categoryLabel} - {formatPrice(product.price)}
+                        {product.paymentBypassEnabled ? " - Payment bypass on" : ""}
                       </p>
                     </div>
                     <button
@@ -257,8 +257,9 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
             <form className="rounded-lg border border-line bg-surface p-5" onSubmit={handleSubmit}>
               <div className="flex items-center gap-3">
                 <PackagePlus className="h-6 w-6 text-accent" aria-hidden="true" />
-                <h2 className="font-display text-2xl font-bold text-white">Add Dashboard</h2>
+                <h2 className="font-display text-2xl font-bold text-white">Add or Update Dashboard</h2>
               </div>
+              <p className="mt-2 text-sm text-muted">Use the same slug to update an existing dashboard.</p>
               <div className="mt-5 space-y-4">
                 <Field label="Name" value={form.name} onChange={handleNameChange} required />
                 <Field label="Slug" value={form.slug} onChange={(value) => updateField("slug", slugify(value))} required />
@@ -320,7 +321,7 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
               </div>
               {message ? <p className="mt-4 text-sm text-muted">{message}</p> : null}
               <button className="btn-primary mt-5 inline-flex min-h-11 w-full items-center justify-center px-5 disabled:opacity-60" disabled={isPending}>
-                {isPending ? "Saving..." : "Add Dashboard"}
+                {isPending ? "Saving..." : "Save Dashboard"}
               </button>
             </form>
 

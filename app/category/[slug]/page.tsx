@@ -9,10 +9,6 @@ type CategoryPageProps = {
   params: { slug: string };
 };
 
-export function generateStaticParams() {
-  return categories.map((category) => ({ slug: category.slug }));
-}
-
 export function generateMetadata({ params }: CategoryPageProps) {
   const category = getCategoryBySlug(params.slug);
   if (!category) return {};

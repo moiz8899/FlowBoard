@@ -9,8 +9,7 @@ import { ProductTabs } from "@/components/ProductTabs";
 import { ScreenshotCarousel } from "@/components/ScreenshotCarousel";
 import {
   categories,
-  formatPrice,
-  products
+  formatPrice
 } from "@/lib/products";
 import { findProductBySlug, readProducts } from "@/lib/product-store";
 
@@ -19,10 +18,6 @@ type ProductPageProps = {
 };
 
 export const dynamic = "force-dynamic";
-
-export function generateStaticParams() {
-  return products.map((product) => ({ slug: product.slug }));
-}
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const product = await findProductBySlug(params.slug);

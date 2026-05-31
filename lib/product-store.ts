@@ -93,7 +93,7 @@ export async function addProduct(payload: ProductPayload) {
   const row = productPayloadToRow(payload);
   const { data, error } = await supabase
     .from("products")
-    .insert(row)
+    .upsert(row, { onConflict: "slug" })
     .select("*")
     .single();
 
