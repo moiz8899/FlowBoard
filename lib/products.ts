@@ -27,6 +27,7 @@ export type Product = {
   downloadCount: number;
   tags: string[];
   paddlePriceId: string;
+  paymentBypassEnabled: boolean;
   createdAt: string;
   version: string;
 };

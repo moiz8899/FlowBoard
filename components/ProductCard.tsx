@@ -67,6 +67,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <BuyButton
             paddlePriceId={product.paddlePriceId}
             productSlug={product.slug}
+            paymentBypassEnabled={product.paymentBypassEnabled}
             className="gap-2 px-3 text-sm"
             label={
               <>

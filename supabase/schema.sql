@@ -19,6 +19,7 @@ create table if not exists public.products (
   download_count integer not null default 0,
   tags text[] not null default '{}',
   paddle_price_id text not null default '',
+  payment_bypass_enabled boolean not null default false,
   version text not null default '1.0.0',
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -26,6 +27,7 @@ create table if not exists public.products (
 
 alter table public.products drop column if exists demo_url;
 alter table public.products add column if not exists paddle_price_id text not null default '';
+alter table public.products add column if not exists payment_bypass_enabled boolean not null default false;
 alter table public.products drop column if exists two_checkout_product_id;
 
 create table if not exists public.orders (

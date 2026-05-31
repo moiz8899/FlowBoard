@@ -39,6 +39,7 @@ type FormState = {
   techStack: string;
   tags: string;
   paddlePriceId: string;
+  paymentBypassEnabled: boolean;
 };
 
 const emptyForm: FormState = {
@@ -54,7 +55,8 @@ const emptyForm: FormState = {
   features: "",
   techStack: "HTML5, CSS3, JavaScript",
   tags: "",
-  paddlePriceId: ""
+  paddlePriceId: "",
+  paymentBypassEnabled: false
 };
 
 export function AdminDashboard({ initialProducts, categories, adminEmail, metrics }: AdminDashboardProps) {
@@ -109,7 +111,8 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
       features: splitList(form.features),
       techStack: splitList(form.techStack),
       tags: splitList(form.tags),
-      paddlePriceId: form.paddlePriceId
+      paddlePriceId: form.paddlePriceId,
+      paymentBypassEnabled: form.paymentBypassEnabled
     };
 
     startTransition(async () => {
@@ -232,6 +235,7 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
                       <p className="font-semibold text-white">{product.name}</p>
                       <p className="text-sm text-muted">
                         {product.categoryLabel} · {formatPrice(product.price)}
+                        {product.paymentBypassEnabled ? " · Payment bypass on" : ""}
                       </p>
                     </div>
                     <button
@@ -279,6 +283,20 @@ export function AdminDashboard({ initialProducts, categories, adminEmail, metric
                 <Field label="Short Description" value={form.description} onChange={(value) => updateField("description", value)} required />
                 <TextField label="Long Description" value={form.longDescription} onChange={(value) => updateField("longDescription", value)} required />
                 <Field label="Paddle Price ID" value={form.paddlePriceId} onChange={(value) => updateField("paddlePriceId", value)} required />
+                <label className="flex items-start gap-3 rounded-md border border-amber-400/30 bg-amber-400/10 p-3">
+                  <input
+                    type="checkbox"
+                    className="mt-1 h-4 w-4 accent-indigo-500"
+                    checked={form.paymentBypassEnabled}
+                    onChange={(event) => setForm((current) => ({ ...current, paymentBypassEnabled: event.target.checked }))}
+                  />
+                  <span>
+                    <span className="block text-sm font-semibold text-white">Bypass payment for testing</span>
+                    <span className="mt-1 block text-xs leading-5 text-muted">
+                      Buy buttons will skip Paddle and create a temporary private download link. Turn this off before real sales.
+                    </span>
+                  </span>
+                </label>
                 <FilePicker
                   label="Upload Dashboard ZIP"
                   accept=".zip,application/zip,application/x-zip-compressed"

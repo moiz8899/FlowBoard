@@ -7,6 +7,7 @@ import { useState } from "react";
 type BuyButtonProps = {
   paddlePriceId: string;
   productSlug: string;
+  paymentBypassEnabled?: boolean;
   label?: ReactNode;
   className?: string;
 };
@@ -14,12 +15,18 @@ type BuyButtonProps = {
 export function BuyButton({
   paddlePriceId,
   productSlug,
+  paymentBypassEnabled = false,
   label = "Buy Now",
   className = ""
 }: BuyButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   async function openCheckout() {
+    if (paymentBypassEnabled) {
+      window.location.href = `/api/download/${productSlug}`;
+      return;
+    }
+
     const token = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN;
     const environment = (process.env.NEXT_PUBLIC_PADDLE_ENVIRONMENT || "sandbox") as Environments;
 
@@ -52,10 +59,10 @@ export function BuyButton({
     <button
       type="button"
       onClick={openCheckout}
-      disabled={isLoading || !paddlePriceId}
+      disabled={isLoading || (!paymentBypassEnabled && !paddlePriceId)}
       className={`btn-primary inline-flex min-h-11 items-center justify-center text-center disabled:cursor-not-allowed disabled:opacity-60 ${className}`}
     >
-      {isLoading ? "Loading..." : label}
+      {isLoading ? "Loading..." : paymentBypassEnabled ? "Download Test ZIP" : label}
     </button>
   );
 }

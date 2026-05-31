@@ -22,6 +22,7 @@ type ProductRow = {
   download_count: number;
   tags: string[];
   paddle_price_id: string;
+  payment_bypass_enabled: boolean;
   created_at: string;
   version: string;
 };
@@ -179,6 +180,7 @@ function mapProductRow(row: ProductRow): Product {
     downloadCount: row.download_count || 0,
     tags: row.tags || [],
     paddlePriceId: row.paddle_price_id,
+    paymentBypassEnabled: row.payment_bypass_enabled || false,
     createdAt: row.created_at,
     version: row.version
   };
@@ -203,6 +205,7 @@ function productPayloadToRow(payload: ProductPayload) {
     download_count: payload.downloadCount ?? 0,
     tags: payload.tags || [],
     paddle_price_id: payload.paddlePriceId,
+    payment_bypass_enabled: payload.paymentBypassEnabled || false,
     version: payload.version || "1.0.0"
   };
 }

@@ -115,6 +115,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <BuyButton
               paddlePriceId={product.paddlePriceId}
               productSlug={product.slug}
+              paymentBypassEnabled={product.paymentBypassEnabled}
               className="mt-6 w-full px-6 py-3"
             />
             <div className="my-6 h-px bg-line" />
